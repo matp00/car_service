@@ -1,10 +1,7 @@
 .idea
-<<<<<<< HEAD
 *.iml
 *.xml
-=======
-*.iml
->>>>>>> 0da8eb0c8ad038602b5f2be1b57c4ba0702d071b
 *.MF
 *.class
 *.jar
+target
