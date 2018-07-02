@@ -1,5 +1,6 @@
 package pl.coderslab.services;
 
+
 import java.sql.*;
 import java.util.List;
 
@@ -31,6 +32,16 @@ public class DBService {
 
     }
 
+    public static ResultSet executeSelectQuery(String database, String query) {
+        ResultSet result = null;
+        try( Connection conn = connect(database) ) {
+            PreparedStatement prep = conn.prepareStatement(query);
+            result=prep.executeQuery();
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return result;
+    }
 
     public static ResultSet executeSelectQuery(String database, String query, List<String> params) {
         ResultSet result = null;
@@ -50,19 +61,20 @@ public class DBService {
         return result;
     }
 
-    public static ResultSet executeSelectQuery(String database, String query) {
-        ResultSet result = null;
-        try( Connection conn = connect(database) ) {
-            PreparedStatement prep = conn.prepareStatement(query);
-            result=prep.executeQuery();
-        }catch(SQLException e){
-            System.out.println(e);
-        }
-        return result;
-    }
-
     //TODO :: CREATE METHOD FOR INSERT QUERY RETURNING CREATED ID
 
+
+
+    public static void executeUpdate(String database, String query){
+        try(Connection con = connect(database)){
+            PreparedStatement prep = con.prepareStatement(query);
+
+            prep.executeUpdate();
+            System.out.println("executeUpdate wykonany");
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+    }
     //prepared statement
     public static void executeUpdate(String database, String query, List<String> params){
         try(Connection con = connect(database)){
