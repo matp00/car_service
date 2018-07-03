@@ -1,4 +1,4 @@
 package pl.coderslab.model;
 
-public class test2 {
+public class Employee {
 }

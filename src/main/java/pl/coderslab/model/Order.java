@@ -1,4 +1,4 @@
 package pl.coderslab.model;
 
-public class Test1 {
+public class Order {
 }
