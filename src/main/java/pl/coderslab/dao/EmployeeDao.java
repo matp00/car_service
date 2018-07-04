@@ -80,5 +80,31 @@ public class EmployeeDao {
         return employeeList;
     }
 
+    public Employee getEmployeeById(int id){
+        String query = "SELECT * FROM employee WHERE id="+id;
+        Employee employee;
+        try(ResultSet rs = DBService.executeQuery(DBService.connect(this.databaseName), query)){
+
+            while (rs.next()) {
+
+                employee = (new Employee(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("surname"),
+                        rs.getString("address"),
+                        rs.getInt("phone"),
+                        rs.getString("note"),
+                        rs.getDouble("hourly"),
+                        rs.getString("email"),
+                        rs.getString("birth_date"))
+                );
+                return employee;
+            }
+        }catch (SQLException e){
+            System.out.println("Error in loadAll in EmployeeDao");
+        }
+        return employee = null;
+    }
+
 
 }

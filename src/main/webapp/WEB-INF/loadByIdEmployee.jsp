@@ -38,6 +38,42 @@
     </div>
 </div>
 
+<h1></h1>
+<form target="/loadByIdEmployee" method="post">
+    <input type="number" name="id" placeholder="id Employee">
+    <input type="submit" value="Search">
+</form>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Note</th>
+        <th scope="col">Hourly</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Birth Date</th>
+        <th scope="col">Delete?</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">${employee.id}</th>
+            <td>${employee.name}</td>
+            <td>${employee.surname}</td>
+            <td>${employee.address}</td>
+            <td>${employee.phone}</td>
+            <td>${employee.note}</td>
+            <td>${employee.hourly}</td>
+            <td>${employee.email}</td>
+            <td>${employee.birthDate}</td>
+            <td><input type="submit" value="Delete"></td>
+        </tr>
+    </tbody>
+</table>
+
 
 <c:import url="fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

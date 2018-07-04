@@ -37,7 +37,7 @@
     </button>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="/addEmployee">Add Employee</a>
-        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="/loadByIdEmployee">Load Employee by ID</a>
     </div>
 </div>
 
