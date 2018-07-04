@@ -1,6 +1,6 @@
 package pl.coderslab.model;
 
-public class Employee extends Person {
+public class Employee extends Customer {
     private int id=0;
     private String note;
     private double hourly;
@@ -17,6 +17,11 @@ public class Employee extends Person {
         return id;
     }
 
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNote() {
         return note;
     }
@@ -31,6 +36,5 @@ public class Employee extends Person {
 
     public void setHourly(double hourly) {
         this.hourly = hourly;
-    }
     }
 }

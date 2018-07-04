@@ -1,4 +1,4 @@
 package pl.coderslab.dao;
 
-public class TestDao {
+public class VehicleDao {
 }
