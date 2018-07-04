@@ -91,4 +91,16 @@ public class DBService {
         }
     }
 
+    public static ResultSet executeQuery(Connection conn, String query){
+
+        ResultSet result = null;
+        try{
+            result = conn.createStatement().executeQuery(query);
+
+        }catch (SQLException e){
+
+        }
+        return result;
+    }
+
 }
