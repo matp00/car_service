@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Main</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -23,36 +23,62 @@
 <body>
 <c:import url="fragments/header.jsp"/>
 
-<table class="table table-hover table-dark">
+
+
+<%--Naglowek do Panelu Administracyjnego--%>
+<h1>Administration Panel</h1>
+
+<div class="btn-group">
+    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
+        Employee
+    </button>
+    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="/addEmployee">Add Employee</a>
+        <a class="dropdown-item" href="/loadByIdEmployee">Load Employee by ID</a>
+        <a class="dropdown-item" href="/editEmployee">Edit Employee</a>
+        <a class="dropdown-item" href="/deleteEmployee">Delete Employee</a>
+    </div>
+</div>
+
+
+
+
+<%--Tresc do LoadAllEmployee  employeList   --%>
+<h1></h1>
+<table class="table table-hover">
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Note</th>
+        <th scope="col">Hourly</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Birth Date</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-    </tr>
+
+            <c:forEach items="${employeList}" var="employe">
+                <tr>
+                    <th scope="row">${employe.id}</th>
+                    <td>${employe.name}</td>
+                    <td>${employe.surname}</td>
+                    <td>${employe.address}</td>
+                    <td>${employe.phone}</td>
+                    <td>${employe.note}</td>
+                    <td>${employe.hourly}</td>
+                    <td>${employe.email}</td>
+                    <td>${employe.birthDate}</td>
+                </tr>
+            </c:forEach>
     </tbody>
 </table>
-
 
 <c:import url="fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
