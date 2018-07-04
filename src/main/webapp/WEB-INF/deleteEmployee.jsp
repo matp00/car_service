@@ -23,9 +23,6 @@
 <body>
 <c:import url="fragments/header.jsp"/>
 
-
-
-<%--Naglowek do Panelu Administracyjnego--%>
 <h1>Administration Panel</h1>
 
 <div class="btn-group">
@@ -43,42 +40,10 @@
     </div>
 </div>
 
-
-
-
-<%--Tresc do LoadAllEmployee  employeList   --%>
-<h1></h1>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">Address</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Note</th>
-        <th scope="col">Hourly</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Birth Date</th>
-    </tr>
-    </thead>
-    <tbody>
-
-            <c:forEach items="${employeList}" var="employe">
-                <tr>
-                    <th scope="row">${employe.id}</th>
-                    <td>${employe.name}</td>
-                    <td>${employe.surname}</td>
-                    <td>${employe.address}</td>
-                    <td>${employe.phone}</td>
-                    <td>${employe.note}</td>
-                    <td>${employe.hourly}</td>
-                    <td>${employe.email}</td>
-                    <td>${employe.birthDate}</td>
-                </tr>
-            </c:forEach>
-    </tbody>
-</table>
+<form target="/deleteEmployee" method="post">
+    <input type="number" name="id" placeholder="id Employee">
+    <input type="submit" value="Delete">
+</form>
 
 <c:import url="fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

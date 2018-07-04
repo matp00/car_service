@@ -125,5 +125,17 @@ public class EmployeeDao {
         return employee = null;
     }
 
+    public void delete(int id){
+
+        String query = "DELETE FROM employee WHERE id="+id;
+
+        try {
+            DBService.executeUpdate(this.databaseName, query);
+        }catch (Exception e){
+            System.out.println("No element in tab (Employee->delete)");
+        }
+
+    }
+
 
 }
