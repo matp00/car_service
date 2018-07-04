@@ -34,6 +34,25 @@ public class EmployeeDao {
         DBService.executeUpdate(this.databaseName, query, queryParams);
     }
 
+    public void editEmployee(Employee employee){
+
+        String query = "UPDATE employee SET name=?,surname=?,address=?,phone=?,note=?,hourly=?,email=?,birth_date=? WHERE id=?";
+
+        List<String> queryParams = new ArrayList<>();
+
+        queryParams.add(employee.getName());
+        queryParams.add(employee.getSurname());
+        queryParams.add(employee.getAddress());
+        queryParams.add(employee.getPhone()+"");
+        queryParams.add(employee.getNote());
+        queryParams.add(employee.getHourly()+"");
+        queryParams.add(employee.getEmail());
+        queryParams.add(employee.getBirthDate());
+        queryParams.add( String.valueOf(employee.getId()) );
+
+        DBService.executeUpdate(this.databaseName, query, queryParams);
+    }
+
     public int getId(){
 
         try(Connection conn = DBService.connect(this.databaseName)){

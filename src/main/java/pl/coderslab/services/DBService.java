@@ -15,7 +15,7 @@ public class DBService {
 
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/" + database +"?useUnicode=true" +
-                        "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                        "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false",
                 "root",
                 "coderslab");
     }

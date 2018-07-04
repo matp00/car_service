@@ -18,8 +18,6 @@ public class loadByIdEmployee extends HttpServlet {
             int employeeId = Integer.parseInt(request.getParameter("id"));
             EmployeeDao employeeDao = new EmployeeDao();
             Employee employee = employeeDao.getEmployeeById(employeeId);
-
-            System.out.println("");
             request.setAttribute("employee",employee);
         }catch (Exception e){
             System.out.println("Cannot convert loadByIdEmployee to Integer");

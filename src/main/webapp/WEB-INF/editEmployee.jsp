@@ -23,13 +23,10 @@
 <body>
 <c:import url="fragments/header.jsp"/>
 
-
-
-<%--Naglowek do Panelu Administracyjnego--%>
 <h1>Administration Panel</h1>
 
 <div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/Main';">
+    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
         Employee
     </button>
     <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,42 +39,52 @@
     </div>
 </div>
 
-
-
-
-<%--Tresc do LoadAllEmployee  employeList   --%>
 <h1></h1>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">Address</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Note</th>
-        <th scope="col">Hourly</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Birth Date</th>
-    </tr>
-    </thead>
-    <tbody>
+<form target="/editEmployee" method="get">
+    <input type="number" name="id" placeholder="id Employee">
+    <input type="submit" value="Search">
+</form>
 
-            <c:forEach items="${employeList}" var="employe">
-                <tr>
-                    <th scope="row">${employe.id}</th>
-                    <td>${employe.name}</td>
-                    <td>${employe.surname}</td>
-                    <td>${employe.address}</td>
-                    <td>${employe.phone}</td>
-                    <td>${employe.note}</td>
-                    <td>${employe.hourly}</td>
-                    <td>${employe.email}</td>
-                    <td>${employe.birthDate}</td>
-                </tr>
-            </c:forEach>
-    </tbody>
-</table>
+<form method="post" target="/editEmployee">
+    <h3>Edit Employee</h3>
+    <div class="form-row">
+        <div class="form-group">
+            <input type="number" class="form-control" value="${employee.id}" name="id">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="${employee.name}" name="name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="${employee.surname}" name="surname">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" value="${employee.address}" name="address">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" value="${employee.phone}" name="phone">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control" value="${employee.note}" name="note">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" value="${employee.hourly}" name="hourly">
+        </div>
+        <div class="col">
+            <input type="email" class="form-control" value="${employee.email}" name="email">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <input type="text" class="form-control" value="${employee.birthDate}" name="birthDate">
+        </div>
+    </div>
+    <input type="submit" value="Edit Employee">
+
+</form>
+
 
 <c:import url="fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
