@@ -1,6 +1,5 @@
 package pl.coderslab.services;
 
-
 import java.sql.*;
 import java.util.List;
 
@@ -63,14 +62,26 @@ public class DBService {
 
     //TODO :: CREATE METHOD FOR INSERT QUERY RETURNING CREATED ID
 
+    public static int executeUpdateReturnId(String database, String query){
+        Integer id=null;
+        try(Connection con = connect(database)){
 
+            String generatedColumns[] = {"ID"};
+            PreparedStatement prep = con.prepareStatement(query,generatedColumns);
+            prep.executeUpdate();
+            ResultSet rs = prep.getGeneratedKeys();
+            if (rs.next())  id = rs.getInt(1);
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+        return id;
+    }
 
     public static void executeUpdate(String database, String query){
         try(Connection con = connect(database)){
             PreparedStatement prep = con.prepareStatement(query);
 
             prep.executeUpdate();
-            System.out.println("executeUpdate wykonany");
         }catch (SQLException e){
             System.out.println(e);
         }
@@ -85,7 +96,6 @@ public class DBService {
             }
 
             prep.executeUpdate();
-            System.out.println("executeUpdate wykonany");
         }catch (SQLException e){
             System.out.println(e);
         }

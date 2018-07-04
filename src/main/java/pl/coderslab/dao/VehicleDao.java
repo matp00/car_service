@@ -2,9 +2,6 @@ package pl.coderslab.dao;
 
 import pl.coderslab.model.Vehicle;
 import pl.coderslab.services.DBService;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,12 +30,10 @@ public class VehicleDao {
         DBService.executeUpdate("car_service", query);
     }
 
-    public static List<Vehicle> loadAll(Connection conn) throws SQLException {
+    public static List<Vehicle> loadAll() throws SQLException {
         List<Vehicle> vehicles = new ArrayList<Vehicle>();
-        String sql = "SELECT * FROM vehicle";
-        PreparedStatement preparedStatement;
-        preparedStatement = conn.prepareStatement(sql);
-        ResultSet resultSet = preparedStatement.executeQuery();
+        String query = "SELECT * FROM vehicle";
+        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
         while (resultSet.next()) {
             Vehicle loadedVehicle = new Vehicle();
             loadedVehicle.setId(resultSet.getInt("id"));
@@ -51,5 +46,21 @@ public class VehicleDao {
             vehicles.add(loadedVehicle);
         }
         return vehicles;
+    }
+
+    public static Vehicle loadById(int id) throws SQLException {
+        Vehicle loadedVehicle = new Vehicle();
+        String query = "SELECT * FROM vehicle WHERE id="+id;
+        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        while (resultSet.next()) {
+            loadedVehicle.setId(resultSet.getInt("id"));
+            loadedVehicle.setBrand(resultSet.getString("brand"));
+            loadedVehicle.setModel(resultSet.getString("model"));
+            loadedVehicle.setProduction_year(resultSet.getString("production_year"));
+            loadedVehicle.setRegistration_number(resultSet.getString("registration_number"));
+            loadedVehicle.setNext_service(resultSet.getString("next_service"));
+            loadedVehicle.setCustomer_id(resultSet.getInt("customer_id"));
+        }
+        return loadedVehicle;
     }
 }
