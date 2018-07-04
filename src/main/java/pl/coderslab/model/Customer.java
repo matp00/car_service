@@ -1,6 +1,6 @@
 package pl.coderslab.model;
 
-public class Customer extends Person {
+public class Vehicle extends Person {
     protected int id=0;
     private String address;
     private String phone;

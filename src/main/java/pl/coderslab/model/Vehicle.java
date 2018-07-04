@@ -7,22 +7,27 @@ public class Vehicle {
     private int production_year;
     private String registration_number;
     private String next_service;
+    private int customer_id;
 
     public Vehicle() {
     }
 
-    public Vehicle(String brand, String model, int production_year, String registration_number, String next_service) {
+    public Vehicle(String brand, String model, int production_year, String registration_number, String next_service, int customer_id) {
         setBrand(brand);
         setModel(model);
         setProduction_year(production_year);
         setRegistration_number(registration_number);
         setNext_service(next_service);
+        setCustomer_id(customer_id);
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getBrand() {
         return brand;
@@ -62,5 +67,13 @@ public class Vehicle {
 
     public void setNext_service(String next_service) {
         this.next_service = next_service;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 }
