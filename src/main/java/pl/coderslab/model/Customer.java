@@ -1,21 +1,27 @@
 package pl.coderslab.model;
 
 public class Customer extends Person {
-    private int id=0;
+    protected int id=0;
     private String address;
     private String phone;
     private String email;
-    private String date_of_birth;
+    private String birth_date;
 
     public Customer() {
     }
 
-    public Customer(String name, String surname, String address, String phone, String email, String date_of_birth) {
-        super(name, surname);
+    public Customer(String name, String surname, String address, String phone, String email, String birth_date) {
+
+        super(name, surname);;
         setAddress(address);
         setPhone(phone);
         setEmail(email);
-        setDate_of_birth(date_of_birth);
+        setBirth_date(birth_date);
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -46,11 +52,13 @@ public class Customer extends Person {
         this.email = email;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getBirth_date() {
+        return birth_date;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setBirth_date(String date_of_birth) {
+        this.birth_date = birth_date;
     }
+
+
 }
