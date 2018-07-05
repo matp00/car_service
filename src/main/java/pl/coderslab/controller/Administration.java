@@ -7,15 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Main", urlPatterns = "/Main")
-public class Main extends HttpServlet {
+@WebServlet(name = "Administration", urlPatterns = "/Administration")
+public class Administration extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        getServletContext().getRequestDispatcher("/WEB-INF/main.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/Administration.jsp").forward(request,response);
     }
 }

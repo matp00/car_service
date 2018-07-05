@@ -48,7 +48,7 @@ public class OrderDao {
             loadedOrder.setAcceptance(resultSet.getString("acceptance"));
             loadedOrder.setMaintenance_start(resultSet.getString("maintenance_start"));
             loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
-            loadedOrder.setGetMaintenance_description(resultSet.getInt("maintenance_description"));
+            loadedOrder.setGetMaintenance_description(resultSet.getString("maintenance_description"));
             loadedOrder.setTotal_price(resultSet.getDouble("total_price"));
             loadedOrder.setParts_cost(resultSet.getDouble("parts_cost"));
             loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));
@@ -70,7 +70,7 @@ public class OrderDao {
             loadedOrder.setAcceptance(resultSet.getString("acceptance"));
             loadedOrder.setMaintenance_start(resultSet.getString("maintenance_start"));
             loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
-            loadedOrder.setGetMaintenance_description(resultSet.getInt("maintenance_description"));
+            loadedOrder.setGetMaintenance_description(resultSet.getString("maintenance_description"));
             loadedOrder.setTotal_price(resultSet.getDouble("total_price"));
             loadedOrder.setParts_cost(resultSet.getDouble("parts_cost"));
             loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));

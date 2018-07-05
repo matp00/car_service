@@ -94,7 +94,7 @@ public class CustomerDao {
             loadedVehicle.setId(resultSet.getInt("id"));
             loadedVehicle.setBrand(resultSet.getString("brand"));
             loadedVehicle.setModel(resultSet.getString("model"));
-            loadedVehicle.setProduction_year(resultSet.getString("production_year"));
+            loadedVehicle.setProduction_year(resultSet.getInt("production_year"));
             loadedVehicle.setRegistration_number(resultSet.getString("registration_number"));
             loadedVehicle.setNext_service(resultSet.getString("next_service"));
             //loadedVehicle.setCustomer_id(resultSet.getInt("customer_id"));

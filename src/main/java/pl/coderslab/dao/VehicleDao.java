@@ -1,5 +1,6 @@
 package pl.coderslab.dao;
 
+import pl.coderslab.model.Order;
 import pl.coderslab.model.Vehicle;
 import pl.coderslab.services.DBService;
 import java.sql.ResultSet;
@@ -39,7 +40,7 @@ public class VehicleDao {
             loadedVehicle.setId(resultSet.getInt("id"));
             loadedVehicle.setBrand(resultSet.getString("brand"));
             loadedVehicle.setModel(resultSet.getString("model"));
-            loadedVehicle.setProduction_year(resultSet.getString("production_year"));
+            loadedVehicle.setProduction_year(resultSet.getInt("production_year"));
             loadedVehicle.setRegistration_number(resultSet.getString("registration_number"));
             loadedVehicle.setNext_service(resultSet.getString("next_service"));
             loadedVehicle.setCustomer_id(resultSet.getInt("customer_id"));
@@ -56,11 +57,37 @@ public class VehicleDao {
             loadedVehicle.setId(resultSet.getInt("id"));
             loadedVehicle.setBrand(resultSet.getString("brand"));
             loadedVehicle.setModel(resultSet.getString("model"));
-            loadedVehicle.setProduction_year(resultSet.getString("production_year"));
+            loadedVehicle.setProduction_year(resultSet.getInt("production_year"));
             loadedVehicle.setRegistration_number(resultSet.getString("registration_number"));
             loadedVehicle.setNext_service(resultSet.getString("next_service"));
             loadedVehicle.setCustomer_id(resultSet.getInt("customer_id"));
         }
         return loadedVehicle;
     }
+
+    public static void addCustomer (int vehicleId, int customerId){
+        String query="UPDATE vehicle SET customer_id="+customerId+"WHERE id="+vehicleId;
+        DBService.executeUpdate("car_service",query);
+        }
+
+     public static Order loadRepairHistory(int id) throws SQLException {
+         String query="SELECT * FROM order WHERE vehicle_id="+id;
+         Order loadedOrder = new Order();
+         ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+         while (resultSet.next()) {
+             loadedOrder.setId(resultSet.getInt("id"));
+             loadedOrder.setStatus_id(resultSet.getInt("status_id"));
+             loadedOrder.setCustomer_id(resultSet.getInt("customer_id"));
+             loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+             loadedOrder.setProblem_description(resultSet.getString("problem_description"));
+             loadedOrder.setAcceptance(resultSet.getString("acceptance"));
+             loadedOrder.setMaintenance_start(resultSet.getString("maintenance_start"));
+             loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+             loadedOrder.setGetMaintenance_description(resultSet.getString("maintenance_description"));
+             loadedOrder.setTotal_price(resultSet.getDouble("total_price"));
+             loadedOrder.setParts_cost(resultSet.getDouble("parts_cost"));
+             loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));
+         }
+         return loadedOrder;
+     }
 }
