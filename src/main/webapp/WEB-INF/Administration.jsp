@@ -40,6 +40,53 @@
     </div>
 </div>
 
+<div class="btn-group">
+    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
+        Customer
+    </button>
+    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="/addEmployee">Add Customer</a>
+        <a class="dropdown-item" href="/loadByIdEmployee">Load Customer by ID</a>
+        <a class="dropdown-item" href="/editEmployee">Edit Customer</a>
+        <a class="dropdown-item" href="/deleteEmployee">Delete Customer</a>
+    </div>
+</div>
+
+<div class="btn-group">
+    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
+        Vehicle
+    </button>
+    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="/addEmployee">Add Vehicle</a>
+        <a class="dropdown-item" href="/loadByIdEmployee">Load Vehicle by ID</a>
+        <a class="dropdown-item" href="/editEmployee">Edit Vehicle</a>
+        <a class="dropdown-item" href="/deleteEmployee">Delete Vehicle</a>
+    </div>
+</div>
+
+<div class="btn-group">
+    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
+        Order
+    </button>
+    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="/addEmployee">Add Order</a>
+        <a class="dropdown-item" href="/loadByIdEmployee">Load Order by ID</a>
+        <a class="dropdown-item" href="/editEmployee">Edit Order</a>
+        <a class="dropdown-item" href="/deleteEmployee">Delete Order</a>
+    </div>
+</div>
+
+
+
 
 <c:import url="fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
