@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Main</title>
+    <title>Order Detail</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -23,32 +23,54 @@
 <body>
 <c:import url="fragments/header.jsp"/>
 
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Customer name</th>
+        <th scope="col">Customer surname</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Birth Date</th>
+    </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <th scope="row">${customer.id}</th>
+                <td>${customer.name}</td>
+                <td>${customer.surname}</td>
+                <td>${customer.address}</td>
+                <td>${customer.phone}</td>
+                <td>${customer.email}</td>
+                <td>${customer.birth_date}</td>
+            </tr>
+    </tbody>
+</table>
 
 <table class="table table-hover">
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Employee name</th>
-        <th scope="col">Employee surname</th>
-        <th scope="col">Active Order</th>
-        <th scope="col">Details</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
+        <th scope="col">Production year</th>
+        <th scope="col">Registration number</th>
+        <th scope="col">Next Service</th>
     </tr>
     </thead>
     <tbody>
-    <form method="post">
-    <c:forEach items="${employeeList}" var="employee">
     <tr>
-        <th scope="row">${employee.id}</th>
-        <td>${employee.name}</td>
-        <td>${employee.surname}</td>
-        <td>${ordersHaveEmployee[employee.id-1]}</td>
-        <td><input type="submit" value="Show All ${employee.id}" name="submit"></td>
-
+        <th scope="row">${vehicle.id}</th>
+        <td>${vehicle.brand}</td>
+        <td>${vehicle.model}</td>
+        <td>${vehicle.production_year}</td>
+        <td>${vehicle.registration_number}</td>
+        <td>${vehicle.next_service}</td>
     </tr>
-    </c:forEach>
-    </form>
     </tbody>
 </table>
+
 
 
 <c:import url="fragments/footer.jsp"/>

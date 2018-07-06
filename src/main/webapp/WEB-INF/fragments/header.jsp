@@ -10,7 +10,7 @@
     </div>
     <nav class="navbar navbar-dark bg-dark">
         <form class="form-inline">
-            <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080/Main';">Main web</button>
+            <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080';">Main web</button>
             <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080/Group';">Group</button>
             <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080/Administration';">Administration panel</button>
         </form>
