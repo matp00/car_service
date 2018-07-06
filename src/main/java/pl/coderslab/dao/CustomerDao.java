@@ -35,7 +35,8 @@ public class CustomerDao {
     public static List<Customer> loadAll() throws SQLException {
         List<Customer> customers = new ArrayList<Customer>();
         String query = "SELECT * FROM customer";
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
             Customer loadedCustomer = new Customer();
             loadedCustomer.setId(resultSet.getInt("id"));
@@ -53,7 +54,8 @@ public class CustomerDao {
     public static Customer loadById(int id) throws SQLException {
         Customer loadedCustomer = new Customer();
         String query = "SELECT * FROM customer WHERE id="+id;
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
             loadedCustomer.setId(resultSet.getInt("id"));
             loadedCustomer.setName(resultSet.getString("name"));
@@ -61,7 +63,8 @@ public class CustomerDao {
             loadedCustomer.setAddress(resultSet.getString("address"));
             loadedCustomer.setPhone(resultSet.getString("phone"));
             loadedCustomer.setEmail(resultSet.getString("email"));
-            loadedCustomer.setBirth_date(resultSet.getString("birth_date"));
+            String birthDate = resultSet.getString(("birth_date"));
+            loadedCustomer.setBirth_date(birthDate);
         }
         return loadedCustomer;
     }

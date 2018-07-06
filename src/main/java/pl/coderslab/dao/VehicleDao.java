@@ -34,7 +34,8 @@ public class VehicleDao {
     public static List<Vehicle> loadAll() throws SQLException {
         List<Vehicle> vehicles = new ArrayList<Vehicle>();
         String query = "SELECT * FROM vehicle";
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
             Vehicle loadedVehicle = new Vehicle();
             loadedVehicle.setId(resultSet.getInt("id"));
@@ -52,7 +53,8 @@ public class VehicleDao {
     public static Vehicle loadById(int id) throws SQLException {
         Vehicle loadedVehicle = new Vehicle();
         String query = "SELECT * FROM vehicle WHERE id="+id;
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
             loadedVehicle.setId(resultSet.getInt("id"));
             loadedVehicle.setBrand(resultSet.getString("brand"));

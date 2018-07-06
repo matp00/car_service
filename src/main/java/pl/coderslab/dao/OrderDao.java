@@ -1,5 +1,6 @@
 package pl.coderslab.dao;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import pl.coderslab.model.Order;
 import pl.coderslab.model.Vehicle;
 import pl.coderslab.services.DBService;
@@ -34,15 +35,19 @@ public class OrderDao {
         DBService.executeUpdate("car_service", query);
     }
 
+    //TODO Customer id trzeba usunac z ORDER!!!
+
+
     public static List<Order> loadAll() throws SQLException {
         List<Order> vehicles = new ArrayList<Order>();
-        String query = "SELECT * FROM order";
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        String query = "SELECT * FROM car_service.`order`;";
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
             Order loadedOrder = new Order();
             loadedOrder.setId(resultSet.getInt("id"));
             loadedOrder.setStatus_id(resultSet.getInt("status_id"));
-            loadedOrder.setCustomer_id(resultSet.getInt("customer_id"));
+            //loadedOrder.setCustomer_id(resultSet.getInt("customer_id"));
             loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
             loadedOrder.setProblem_description(resultSet.getString("problem_description"));
             loadedOrder.setAcceptance(resultSet.getString("acceptance"));
@@ -59,12 +64,13 @@ public class OrderDao {
 
     public static Order loadById(int id) throws SQLException {
         Order loadedOrder = new Order();
-        String query = "SELECT * FROM order WHERE id="+id;
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        String query = "SELECT * FROM car_service.`order` where id="+id;
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
             loadedOrder.setId(resultSet.getInt("id"));
             loadedOrder.setStatus_id(resultSet.getInt("status_id"));
-            loadedOrder.setCustomer_id(resultSet.getInt("customer_id"));
+            //loadedOrder.setCustomer_id(resultSet.getInt("customer_id"));
             loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
             loadedOrder.setProblem_description(resultSet.getString("problem_description"));
             loadedOrder.setAcceptance(resultSet.getString("acceptance"));
@@ -76,5 +82,31 @@ public class OrderDao {
             loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));
         }
         return loadedOrder;
+    }
+
+
+
+
+    public static List<Order> loadAll(String query) throws SQLException {
+        List<Order> vehicles = new ArrayList<Order>();
+        //ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
+        while (resultSet.next()) {
+            Order loadedOrder = new Order();
+            loadedOrder.setId(resultSet.getInt("id"));
+            loadedOrder.setStatus_id(resultSet.getInt("status_id"));
+            //loadedOrder.setCustomer_id(resultSet.getInt("customer_id"));
+            loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+            loadedOrder.setProblem_description(resultSet.getString("problem_description"));
+            loadedOrder.setAcceptance(resultSet.getString("acceptance"));
+            loadedOrder.setMaintenance_start(resultSet.getString("maintenance_start"));
+            loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+            loadedOrder.setGetMaintenance_description(resultSet.getString("maintenance_description"));
+            loadedOrder.setTotal_price(resultSet.getDouble("total_price"));
+            loadedOrder.setParts_cost(resultSet.getDouble("parts_cost"));
+            loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));
+            vehicles.add(loadedOrder);
+        }
+        return vehicles;
     }
 }

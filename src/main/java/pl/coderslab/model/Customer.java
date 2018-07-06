@@ -56,7 +56,7 @@ public class Customer extends Person {
         return birth_date;
     }
 
-    public void setBirth_date(String date_of_birth) {
+    public void setBirth_date(String birth_date) {
         this.birth_date = birth_date;
     }
 
