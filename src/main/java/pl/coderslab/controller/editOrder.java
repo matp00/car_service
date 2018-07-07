@@ -37,8 +37,8 @@ public class editOrder extends HttpServlet {
         Cookie[] cookies=request.getCookies();
         for (Cookie c : cookies) {
             if (c.getName().equals("orderId")) {
-                int vehicleId = Integer.parseInt(c.getValue());
-                VehicleDao.editVehicle(params,vehicleId);
+                int orderId = Integer.parseInt(c.getValue());
+                OrderDao.editOrder(params,orderId);
                 getServletContext().getRequestDispatcher("/WEB-INF/fragments/editOrder.jsp").forward(request,response);
             }
         }

@@ -63,15 +63,15 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <Label>Acceptance date</Label>
-            <input type="date" class="form-control"  name="acceptance" value="${order.acceptance}">
+            <input type="datetime" class="form-control"  name="acceptance" value="${order.acceptance}">
         </div>
         <div class="form-group col-md-4">
             <Label>Planned maintenance date</Label>
-            <input type="date" class="form-control"  name="planned_maintenance" value="${order.planned_maintenance}">
+            <input type="datetime" class="form-control"  name="planned_maintenance" value="${order.planned_maintenance}">
         </div>
         <div class="form-group col-md-4">
             <Label>Maintenance start date</Label>
-            <input type="date" class="form-control"  name="maintenance_start" value="${order.maintenance_start}">
+            <input type="datetime" class="form-control"  name="maintenance_start" value="${order.maintenance_start}">
         </div>
     </div>
     <div class="form-row">
