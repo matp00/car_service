@@ -11,7 +11,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <form class="form-inline">
             <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080';">Main web</button>
-            <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080/Group';">Group</button>
+            <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080/raports';">Raports</button>
             <button class="btn btn-outline-success" type="button" onclick="location.href='http://localhost:8080/Administration';">Administration panel</button>
         </form>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
