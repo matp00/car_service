@@ -91,7 +91,7 @@ public class OrderDao {
         return loadedOrder;
     }
     public static List<Order> loadAll(String query) throws SQLException {
-        List<Order> vehicles = new ArrayList<Order>();
+        List<Order> orders = new ArrayList<Order>();
 
         ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
         while (resultSet.next()) {
@@ -107,8 +107,8 @@ public class OrderDao {
             loadedOrder.setTotal_price(resultSet.getDouble("total_price"));
             loadedOrder.setParts_cost(resultSet.getDouble("parts_cost"));
             loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));
-            vehicles.add(loadedOrder);
+            orders.add(loadedOrder);
         }
-        return vehicles;
+        return orders;
     }
 }
