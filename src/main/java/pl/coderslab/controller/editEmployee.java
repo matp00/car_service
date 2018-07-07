@@ -15,8 +15,6 @@ public class editEmployee extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
-
         //Edytuje
         try{
             int id = Integer.parseInt(request.getParameter("id"));

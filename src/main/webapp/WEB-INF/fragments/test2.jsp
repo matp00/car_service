@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -21,37 +22,38 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
+<c:import url="/WEB-INF/fragments/header.jsp"/>
 
-
-<table class="table table-hover">
+<table class="table table-hover" >
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Employee name</th>
-        <th scope="col">Employee surname</th>
-        <th scope="col">Active Order</th>
-        <th scope="col">Details</th>
+        <th scope="col">name</th>
+        <th scope="col">surname</th>
+        <th scope="col">address</th>
+        <th scope="col">phone</th>
+        <th scope="col">email</th>
+        <th scope="col">date_of_birth</th>
     </tr>
     </thead>
     <tbody>
-    <form method="post">
-    <c:forEach items="${employeeList}" var="employee">
-    <tr>
-        <th scope="row">${employee.id}</th>
-        <td>${employee.name}</td>
-        <td>${employee.surname}</td>
-        <td>${ordersHaveEmployee[employee.id-1]}</td>
-        <td><input type="submit" value="Show All ${employee.id}" name="submit"></td>
-
-    </tr>
+    <c:forEach items="${customers}" var="customer">
+        <tr>
+            <td>${empty customer.getId() ? "brak" : customer.getId()}</td>
+            <td>${customer.getName()}</td>
+            <td>${customer.getSurname()}</td>
+            <td>${customer.getAddress()}</td>
+            <td>${customer.getPhone()}</td>
+            <td>${customer.getEmail()}</td>
+            <td>${customer.getDate_of_birth()}</td>
+        </tr>
     </c:forEach>
-    </form>
+
     </tbody>
 </table>
 
 
-<c:import url="fragments/footer.jsp"/>
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

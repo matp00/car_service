@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,24 +20,8 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
-
+<c:import url="/WEB-INF/fragments/header.jsp"/>
 <h1>Administration Panel</h1>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
-        Employee
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addEmployee">Add Employee</a>
-        <a class="dropdown-item" href="/loadByIdEmployee">Load Employee by ID</a>
-        <a class="dropdown-item" href="/editEmployee">Edit Employee</a>
-        <a class="dropdown-item" href="/deleteEmployee">Delete Employee</a>
-    </div>
-</div>
 
 <div class="btn-group">
     <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllCustomer';">
@@ -54,41 +37,49 @@
         <a class="dropdown-item" href="/deleteCustomer">Delete Customer</a>
     </div>
 </div>
+<form target="editCustomer" method="get">
+    <input type="number" name="id" placeholder="id Vehicle">
+    <input type="submit" value="Search">
+</form>
+<br>
+<form action="editCustomer" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >Name</label>
+            <input type="text" class="form-control"  value="${customer.name}" name="name">
+        </div>
 
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllVehicle';">
-        Vehicle
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addVehicle">Add Vehicle</a>
-        <a class="dropdown-item" href="/loadByIdVehicle">Load Vehicle by ID</a>
-        <a class="dropdown-item" href="/editVehicle">Edit Vehicle</a>
-        <a class="dropdown-item" href="/deleteVehicle">Delete Vehicle</a>
+        <div class="form-group">
+            <label >Surname</label>
+            <input type="text" class="form-control" name="surname" value="${customer.surname}">
+        </div>
     </div>
-</div>
 
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllOrder';">
-        Order
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addOrder">Add Order</a>
-        <a class="dropdown-item" href="/loadByIdOrder">Load Order by ID</a>
-        <a class="dropdown-item" href="/editOrder">Edit Order</a>
-        <a class="dropdown-item" href="/deleteOrder">Delete Order</a>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >Address</label>
+            <input type="text" class="form-control" name="address" value="${customer.address}">
+        </div>
+        <div class="form-group col-md-6">
+            <label >Phone</label>
+            <input type="text" class="form-control" name="phone" value="${customer.phone}">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label >Email</label>
+            <input type="email" class="form-control" name="email" value="${customer.email}">
+        </div>
+        <div class="form-group col-md-2">
+            <label >Birth date</label>
+            <input type="date" class="form-control" name="birth_date" value="${customer.birth_date}">
+        </div>
     </div>
-</div>
 
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
 
-
-
-<c:import url="fragments/footer.jsp"/>
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

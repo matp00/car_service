@@ -21,37 +21,36 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
-
+<c:import url="/WEB-INF/fragments/header.jsp"/>
 
 <table class="table table-hover">
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Employee name</th>
-        <th scope="col">Employee surname</th>
-        <th scope="col">Active Order</th>
-        <th scope="col">Details</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
     </tr>
     </thead>
     <tbody>
-    <form method="post">
-    <c:forEach items="${employeeList}" var="employee">
+    <c:forEach items="${customer}" var="customer">
     <tr>
-        <th scope="row">${employee.id}</th>
-        <td>${employee.name}</td>
-        <td>${employee.surname}</td>
-        <td>${ordersHaveEmployee[employee.id-1]}</td>
-        <td><input type="submit" value="Show All ${employee.id}" name="submit"></td>
-
+        <th scope="row">${customer.id}</th>
+        <td>${customer.id}</td>
+        <td>${customer.name}</td>
+        <td>${customer.surname}</td>
+        <td>${customer.address}</td>
+        <td>${customer.phone}</td>
+        <td>${customer.email}</td>
+        <td>${customer.date_of_birth}</td>
     </tr>
     </c:forEach>
-    </form>
+
     </tbody>
 </table>
 
 
-<c:import url="fragments/footer.jsp"/>
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

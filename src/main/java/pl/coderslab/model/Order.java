@@ -3,13 +3,13 @@ package pl.coderslab.model;
 public class Order {
     private int id=0;
     private int status_id;
-    private int customer_id;
     private int vehicle_id;
     private String problem_description;
     private String acceptance;
+    private String planned_maintenance;
     private String maintenance_start;
     private int employee_id;
-    private String getMaintenance_description;
+    private String Maintenance_description;
     private double total_price;
     private double parts_cost;
     private int hours_amount;
@@ -17,17 +17,17 @@ public class Order {
     public Order() {
     }
 
-    public Order(int status_id, int customer_id, int vehicle_id, String problem_description, String acceptance,
-                 String maintenance_start, int employee_id, String getMaintenance_description, double total_price,
+    public Order(int status_id,  int vehicle_id, String problem_description, String acceptance,String planned_maintenance,
+                 String maintenance_start, int employee_id, String Maintenance_description, double total_price,
                  double parts_cost, int hours_amount) {
         this.status_id = status_id;
-        this.customer_id = customer_id;
         this.vehicle_id = vehicle_id;
         this.problem_description = problem_description;
         this.acceptance = acceptance;
+        this.planned_maintenance=planned_maintenance;
         this.maintenance_start = maintenance_start;
         this.employee_id = employee_id;
-        this.getMaintenance_description = getMaintenance_description;
+        this.Maintenance_description = Maintenance_description;
         this.total_price = total_price;
         this.parts_cost = parts_cost;
         this.hours_amount = hours_amount;
@@ -35,6 +35,10 @@ public class Order {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getStatus_id() {
@@ -45,13 +49,6 @@ public class Order {
         this.status_id = status_id;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
 
     public int getVehicle_id() {
         return vehicle_id;
@@ -93,12 +90,12 @@ public class Order {
         this.employee_id = employee_id;
     }
 
-    public String getGetMaintenance_description() {
-        return getMaintenance_description;
+    public String getMaintenance_description() {
+        return Maintenance_description;
     }
 
-    public void setGetMaintenance_description(String getMaintenance_description) {
-        this.getMaintenance_description = getMaintenance_description;
+    public void setMaintenance_description(String Maintenance_description) {
+        this.Maintenance_description = Maintenance_description;
     }
 
     public double getTotal_price() {
@@ -123,5 +120,15 @@ public class Order {
 
     public void setHours_amount(int hours_amount) {
         this.hours_amount = hours_amount;
+    }
+
+    public String getPlanned_maintenance() {
+        return planned_maintenance;
+    }
+
+
+    public void setPlanned_maintenance(String planned_maintenance) {
+        this.planned_maintenance = planned_maintenance;
+
     }
 }

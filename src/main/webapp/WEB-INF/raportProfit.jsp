@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Main</title>
+    <title>Profit Raport</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -24,29 +24,25 @@
 <c:import url="fragments/header.jsp"/>
 
 
+<form method="post">
+    <input type="date" name="dateBegin" placeholder="Date begin">
+    <input type="date" name="dateEnd" placeholder="Date end">
+    <input type="submit" value="Calculate">
+</form>
+
+<h1></h1>
 <table class="table table-hover">
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Employee name</th>
-        <th scope="col">Employee surname</th>
-        <th scope="col">Active Order</th>
-        <th scope="col">Details</th>
+        <th scope="col">Profit</th>
     </tr>
     </thead>
     <tbody>
-    <form method="post">
-    <c:forEach items="${employeeList}" var="employee">
-    <tr>
-        <th scope="row">${employee.id}</th>
-        <td>${employee.name}</td>
-        <td>${employee.surname}</td>
-        <td>${ordersHaveEmployee[employee.id-1]}</td>
-        <td><input type="submit" value="Show All ${employee.id}" name="submit"></td>
-
-    </tr>
-    </c:forEach>
-    </form>
+        <tr>
+            <th scope="row">1</th>
+            <td>${profit}</td>
+        </tr>
     </tbody>
 </table>
 

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Main</title>
+    <title>Add Employee</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -21,55 +21,8 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
-
-<h1>Administration Panel</h1>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
-        Employee
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addEmployee">Add Employee</a>
-        <a class="dropdown-item" href="/loadByIdEmployee">Load Employee by ID</a>
-        <a class="dropdown-item" href="/editEmployee">Edit Employee</a>
-        <a class="dropdown-item" href="/deleteEmployee">Delete Employee</a>
-    </div>
-</div>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllCustomer';">
-        Customer
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addCustomer">Add Customer</a>
-        <a class="dropdown-item" href="/loadByIdCustomer">Load Customer by ID</a>
-        <a class="dropdown-item" href="/editCustomer">Edit Customer</a>
-        <a class="dropdown-item" href="/deleteCustomer">Delete Customer</a>
-    </div>
-</div>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllVehicle';">
-        Vehicle
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addVehicle">Add Vehicle</a>
-        <a class="dropdown-item" href="/loadByIdVehicle">Load Vehicle by ID</a>
-        <a class="dropdown-item" href="/editVehicle">Edit Vehicle</a>
-        <a class="dropdown-item" href="/deleteVehicle">Delete Vehicle</a>
-    </div>
-</div>
-
+<c:import url="/WEB-INF/fragments/header.jsp"/>
+<br>
 <div class="btn-group">
     <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllOrder';">
         Order
@@ -85,10 +38,63 @@
     </div>
 </div>
 
+<c:if test="${not empty information}">${information}</c:if>
 
+<br>
+<form method="post" target="/addOrder">
 
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="number" class="form-control" placeholder="Status id" name="status_id">
+        </div>
+        <div class="form-group col-md-6">
+            <input type="number" class="form-control" placeholder="Vehicle id" name="vehicle_id">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Problem description" name="problem_description">
+        </div>
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <Label>Acceptance date</Label>
+            <input type="date" class="form-control"  name="acceptance">
+        </div>
+        <div class="form-group col-md-4">
+            <Label>Planned maintenance date</Label>
+            <input type="date" class="form-control"  name="planned_maintenance">
+        </div>
+        <div class="form-group col-md-4">
+            <Label>Maintenance start date</Label>
+            <input type="date" class="form-control"  name="maintenance_start">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <input type="number" class="form-control" placeholder="Employee id" name="employee_id">
+        </div>
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" placeholder="Total price" name="total_price">
+        </div>
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" placeholder="Parts cost" name="parts_cost">
+        </div> <div class="form-group col-md-2">
+            <input type="text" class="form-control" placeholder="Hours amount" name="hours_amount">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Maintenance description" name="maintenance_description">
+        </div>
+    </div>
+    <br>
+    <input type="submit" value="Add Order">
 
-<c:import url="fragments/footer.jsp"/>
+</form>
+
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

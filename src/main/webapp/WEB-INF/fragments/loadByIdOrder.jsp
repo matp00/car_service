@@ -21,54 +21,8 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
-
-<h1>Administration Panel</h1>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
-        Employee
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addEmployee">Add Employee</a>
-        <a class="dropdown-item" href="/loadByIdEmployee">Load Employee by ID</a>
-        <a class="dropdown-item" href="/editEmployee">Edit Employee</a>
-        <a class="dropdown-item" href="/deleteEmployee">Delete Employee</a>
-    </div>
-</div>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllCustomer';">
-        Customer
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addCustomer">Add Customer</a>
-        <a class="dropdown-item" href="/loadByIdCustomer">Load Customer by ID</a>
-        <a class="dropdown-item" href="/editCustomer">Edit Customer</a>
-        <a class="dropdown-item" href="/deleteCustomer">Delete Customer</a>
-    </div>
-</div>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllVehicle';">
-        Vehicle
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addVehicle">Add Vehicle</a>
-        <a class="dropdown-item" href="/loadByIdVehicle">Load Vehicle by ID</a>
-        <a class="dropdown-item" href="/editVehicle">Edit Vehicle</a>
-        <a class="dropdown-item" href="/deleteVehicle">Delete Vehicle</a>
-    </div>
-</div>
+<c:import url="/WEB-INF/fragments/header.jsp"/>
+<br>
 
 <div class="btn-group">
     <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllOrder';">
@@ -88,7 +42,54 @@
 
 
 
-<c:import url="fragments/footer.jsp"/>
+
+<%--Tresc do LoadAllEmployee  employeList   --%>
+<h1></h1>
+<h3><c:if test="${not empty information}">${information}</c:if></h3>
+
+<br>
+<form target="/loadByIdOrder" method="post">
+    <input type="number" name="id" placeholder="id Vehicle">
+    <input type="submit" value="Search">
+</form>
+<br>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Status_id</th>
+        <th scope="col">Vehicle_id</th>
+        <th scope="col">Problem description</th>
+        <th scope="col">Acceptance</th>
+        <th scope="col">Planned maintenance</th>
+        <th scope="col">Maintenance start</th>
+        <th scope="col">Employee id</th>
+        <th scope="col">Maintenance description</th>
+        <th scope="col">Total price</th>
+        <th scope="col">Parts cost</th>
+        <th scope="col">Hours amount</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <th scope="row">${order.id}</th>
+            <td>${order.status_id}</td>
+            <td>${order.vehicle_id}</td>
+            <td>${order.problem_description}</td>
+            <td>${order.acceptance}</td>
+            <td>${order.planned_maintenance}</td>
+            <td>${order.maintenance_start}</td>
+            <td>${order.employee_id}</td>
+            <td>${order.maintenance_description}</td>
+            <td>${order.total_price}</td>
+            <td>${order.parts_cost}</td>
+            <td>${order.hours_amount}</td>
+        </tr>
+    </tbody>
+</table>
+
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

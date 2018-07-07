@@ -21,24 +21,12 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
+<c:import url="/WEB-INF/fragments/header.jsp"/>
 
+
+
+<%--Naglowek do Panelu Administracyjnego--%>
 <h1>Administration Panel</h1>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllEmployee';">
-        Employee
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addEmployee">Add Employee</a>
-        <a class="dropdown-item" href="/loadByIdEmployee">Load Employee by ID</a>
-        <a class="dropdown-item" href="/editEmployee">Edit Employee</a>
-        <a class="dropdown-item" href="/deleteEmployee">Delete Employee</a>
-    </div>
-</div>
 
 <div class="btn-group">
     <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllCustomer';">
@@ -55,40 +43,39 @@
     </div>
 </div>
 
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllVehicle';">
-        Vehicle
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addVehicle">Add Vehicle</a>
-        <a class="dropdown-item" href="/loadByIdVehicle">Load Vehicle by ID</a>
-        <a class="dropdown-item" href="/editVehicle">Edit Vehicle</a>
-        <a class="dropdown-item" href="/deleteVehicle">Delete Vehicle</a>
-    </div>
-</div>
-
-<div class="btn-group">
-    <button class="btn btn-secondary btn-lg" type="button" onclick="location.href='http://localhost:8080/loadAllOrder';">
-        Order
-    </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="/addOrder">Add Order</a>
-        <a class="dropdown-item" href="/loadByIdOrder">Load Order by ID</a>
-        <a class="dropdown-item" href="/editOrder">Edit Order</a>
-        <a class="dropdown-item" href="/deleteOrder">Delete Order</a>
-    </div>
-</div>
 
 
+<h1></h1>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Birth date</th>
+    </tr>
+    </thead>
+    <tbody>
 
+    <c:forEach items="${customers}" var="customer">
+        <tr>
+            <th scope="row">${customer.id}</th>
+            <td>${customer.name}</td>
+            <td>${customer.surname}</td>
+            <td>${customer.address}</td>
+            <td>${customer.phone}</td>
+            <td>${customer.email}</td>
+            <td>${customer.birth_date}</td>
 
-<c:import url="fragments/footer.jsp"/>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

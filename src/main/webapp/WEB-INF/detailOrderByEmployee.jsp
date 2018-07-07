@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Main</title>
+    <title>Detail Order By Employee</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -28,24 +28,33 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Employee name</th>
-        <th scope="col">Employee surname</th>
-        <th scope="col">Active Order</th>
+        <th scope="col">Problem description</th>
+        <th scope="col">Acceptance</th>
+        <th scope="col">Maintenence start</th>
+        <th scope="col">Maintenence description</th>
+        <th scope="col">Total price</th>
+        <th scope="col">Parts cost</th>
+        <th scope="col">Hours amount</th>
         <th scope="col">Details</th>
     </tr>
     </thead>
     <tbody>
     <form method="post">
-    <c:forEach items="${employeeList}" var="employee">
-    <tr>
-        <th scope="row">${employee.id}</th>
-        <td>${employee.name}</td>
-        <td>${employee.surname}</td>
-        <td>${ordersHaveEmployee[employee.id-1]}</td>
-        <td><input type="submit" value="Show All ${employee.id}" name="submit"></td>
+        <c:forEach items="${orderList}" var="order">
+            <tr>
+                <th scope="row">${order.id}</th>
+                <td>${order.problem_description}</td>
+                <td>${order.acceptance}</td>
+                <td>${order.maintenance_start}</td>
+                <td>${order.maintenance_description}</td>
+                <td>${order.total_price}</td>
+                <td>${order.parts_cost}</td>
+                <td>${order.hours_amount}</td>
 
-    </tr>
-    </c:forEach>
+                <td><input type="submit" value="Show ${order.id}" name="submitShowOrder"></td>
+
+            </tr>
+        </c:forEach>
     </form>
     </tbody>
 </table>

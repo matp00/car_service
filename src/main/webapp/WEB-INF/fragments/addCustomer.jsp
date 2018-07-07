@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,37 +20,47 @@
     <![endif]-->
 </head>
 <body>
-<c:import url="fragments/header.jsp"/>
+<c:import url="/WEB-INF/fragments/header.jsp"/>
+<c:if test="${not empty information}">${information}</c:if>
+<form action="addCustomer" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label >Surname</label>
+            <input type="text" class="form-control" name="surname" placeholder="Surname">
+        </div>
 
+    </div>
 
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Employee name</th>
-        <th scope="col">Employee surname</th>
-        <th scope="col">Active Order</th>
-        <th scope="col">Details</th>
-    </tr>
-    </thead>
-    <tbody>
-    <form method="post">
-    <c:forEach items="${employeeList}" var="employee">
-    <tr>
-        <th scope="row">${employee.id}</th>
-        <td>${employee.name}</td>
-        <td>${employee.surname}</td>
-        <td>${ordersHaveEmployee[employee.id-1]}</td>
-        <td><input type="submit" value="Show All ${employee.id}" name="submit"></td>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >Address</label>
+            <input type="text" class="form-control" name="address" placeholder="Address">
+        </div>
+        <div class="form-group col-md-6">
+            <label >Phone</label>
+            <input type="text" class="form-control" name="phone" placeholder="Phone">
+        </div>
+    </div>
 
-    </tr>
-    </c:forEach>
-    </form>
-    </tbody>
-</table>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group col-md-6">
+            <label >Birth date</label>
+            <input type="date" class="form-control" name="birth_date" placeholder="Birth date">
+        </div>
+    </div>
 
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
 
-<c:import url="fragments/footer.jsp"/>
+<c:import url="/WEB-INF/fragments/footer.jsp"/>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
