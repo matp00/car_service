@@ -62,7 +62,7 @@ public class VehicleDao {
         return vehicles;
     }
 
-    public static Vehicle loadById(int id) throws SQLException {
+    public static Vehicle loadById(int id)  {
         Vehicle loadedVehicle = new Vehicle();
         String query = "SELECT * FROM vehicle WHERE id="+id;
         try(ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query)) {

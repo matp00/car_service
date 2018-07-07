@@ -90,4 +90,25 @@ public class OrderDao {
         }
         return loadedOrder;
     }
+    public static List<Order> loadAll(String query) throws SQLException {
+        List<Order> vehicles = new ArrayList<Order>();
+
+        ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query);
+        while (resultSet.next()) {
+            Order loadedOrder = new Order();
+            loadedOrder.setId(resultSet.getInt("id"));
+            loadedOrder.setStatus_id(resultSet.getInt("status_id"));
+            loadedOrder.setVehicle_id(resultSet.getInt("vehicle_id"));
+            loadedOrder.setProblem_description(resultSet.getString("problem_description"));
+            loadedOrder.setAcceptance(resultSet.getString("acceptance"));
+            loadedOrder.setMaintenance_start(resultSet.getString("maintenance_start"));
+            loadedOrder.setEmployee_id(resultSet.getInt("employee_id"));
+            loadedOrder.setMaintenance_description(resultSet.getString("maintenance_description"));
+            loadedOrder.setTotal_price(resultSet.getDouble("total_price"));
+            loadedOrder.setParts_cost(resultSet.getDouble("parts_cost"));
+            loadedOrder.setHours_amount(resultSet.getInt("hours_amount"));
+            vehicles.add(loadedOrder);
+        }
+        return vehicles;
+    }
 }
