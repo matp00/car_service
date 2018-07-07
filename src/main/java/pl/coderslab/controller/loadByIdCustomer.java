@@ -12,23 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "loadCustomerById", urlPatterns = "/loadCustomerById")
-public class loadCustomerById extends HttpServlet {
+@WebServlet(name = "loadByIdCustomer", urlPatterns = "/loadByIdCustomer")
+public class loadByIdCustomer extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer=CustomerDao.loadById(id);
         request.setAttribute("customer",customer);
-        getServletContext().getRequestDispatcher("/WEB-INF/fragments/loadCustomerById.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/fragments/loadByIdCustomer.jsp").forward(request,response);
     }catch(Exception e){
         request.setAttribute("information", "Zly format!! Id musi byc liczba!");
-        getServletContext().getRequestDispatcher("/WEB-INF/fragments/loadCustomerById.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/fragments/loadByIdCustomer.jsp").forward(request,response);
         System.out.println(e);
     }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/fragments/loadCustomerById.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/fragments/loadByIdCustomer.jsp").forward(request,response);
     }
 }

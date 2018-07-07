@@ -37,7 +37,7 @@
     </button>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="/addCustomer">Add Customer</a>
-        <a class="dropdown-item" href="/loadCustomerById">Load Customer by ID</a>
+        <a class="dropdown-item" href="/loadByIdCustomer">Load Customer by ID</a>
         <a class="dropdown-item" href="/editCustomer">Edit Customer</a>
         <a class="dropdown-item" href="/deleteCustomer">Delete Customer</a>
     </div>
@@ -47,7 +47,7 @@
 
 <h3><c:if test="${not empty information}">${information}</c:if></h3>
 
-<form target="/loadCustomerById" method="post">
+<form target="/loadByIdCustomer" method="post">
     <input type="number" name="id" placeholder="id Vehicle">
     <input type="submit" value="Search">
 </form>

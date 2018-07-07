@@ -12,56 +12,72 @@ import pl.coderslab.model.Vehicle;
 import pl.coderslab.services.DBService;
 
 public class CustomerDao {
-    public static void addCustomer( Customer customer) {
-        String query="INSERT INTO customer VALUES(NULL,'"+customer.getName()+"','"+customer.getSurname()+"','"+customer.getAddress()+
-        "','"+customer.getPhone()+"','"+customer.getEmail()+"','"+customer.getBirth_date()+"')";
-        int id=DBService.executeUpdateReturnId("car_service",query);
-        customer.setId(id);
+    public static void addCustomer( List<String> params) {
+        StringBuilder sb= new StringBuilder();
+        sb.append("INSERT INTO customer VALUES(NULL");
+        for(int i=0;i<params.size();i++) {
+            if(params.get(i).equals("NULL")) {
+                sb.append(",null");
+                params.remove(i);
+            }
+            else sb.append(",?");
+        }
+        sb.append(")");
+        String query=sb.toString();
+        DBService.executeUpdate("car_service",query,params);
+
     }
 
     public static void editCustomer(Map<String,String> params, int id) {
         Set<String> keys=params.keySet();
         for(String param:keys) {
-            String query = "UPDATE customer SET "+param+"='"+params.get(param)+"' WHERE id=" + id;
-            DBService.executeUpdate("car_service",query);
+            String query = "UPDATE customer SET "+param+"=? WHERE id=" + id;
+            DBService.executeUpdate("car_service",query,params.get(param));
         }
     }
 
-    public static void deleteCustomer(Customer customer) {
-    String query="DELETE FROM customer WHERE id="+customer.getId();
+    public static void deleteCustomer(int id) {
+    String query="DELETE FROM customer WHERE id="+id;
     DBService.executeUpdate("car_service", query);
     }
 
-    public static List<Customer> loadAll() throws SQLException {
+    public static List<Customer> loadAll()  {
         List<Customer> customers = new ArrayList<Customer>();
         String query = "SELECT * FROM customer";
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
-        while (resultSet.next()) {
-            Customer loadedCustomer = new Customer();
-            loadedCustomer.setId(resultSet.getInt("id"));
-            loadedCustomer.setName(resultSet.getString("name"));
-            loadedCustomer.setSurname(resultSet.getString("surname"));
-            loadedCustomer.setAddress(resultSet.getString("address"));
-            loadedCustomer.setPhone(resultSet.getString("phone"));
-            loadedCustomer.setEmail(resultSet.getString("email"));
-            loadedCustomer.setBirth_date(resultSet.getString("birth_date"));
-            customers.add(loadedCustomer);
+        try(ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query)) {
+            while (resultSet.next()) {
+                Customer loadedCustomer = new Customer();
+                loadedCustomer.setId(resultSet.getInt("id"));
+                loadedCustomer.setName(resultSet.getString("name"));
+                loadedCustomer.setSurname(resultSet.getString("surname"));
+                loadedCustomer.setAddress(resultSet.getString("address"));
+                loadedCustomer.setPhone(resultSet.getString("phone"));
+                loadedCustomer.setEmail(resultSet.getString("email"));
+                loadedCustomer.setBirth_date(resultSet.getString("birth_date"));
+                customers.add(loadedCustomer);
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+            System.out.println("Error in loadAllCustomer");
         }
         return customers;
     }
 
-    public static Customer loadById(int id) throws SQLException {
+    public static Customer loadById(int id)  {
         Customer loadedCustomer = new Customer();
         String query = "SELECT * FROM customer WHERE id="+id;
-        ResultSet resultSet = DBService.executeSelectQuery("car_service",query);
-        while (resultSet.next()) {
-            loadedCustomer.setId(resultSet.getInt("id"));
-            loadedCustomer.setName(resultSet.getString("name"));
-            loadedCustomer.setSurname(resultSet.getString("surname"));
-            loadedCustomer.setAddress(resultSet.getString("address"));
-            loadedCustomer.setPhone(resultSet.getString("phone"));
-            loadedCustomer.setEmail(resultSet.getString("email"));
-            loadedCustomer.setBirth_date(resultSet.getString("birth_date"));
+        try(ResultSet resultSet = DBService.executeQuery(DBService.connect("car_service"),query)) {
+            while (resultSet.next()) {
+                loadedCustomer.setId(resultSet.getInt("id"));
+                loadedCustomer.setName(resultSet.getString("name"));
+                loadedCustomer.setSurname(resultSet.getString("surname"));
+                loadedCustomer.setAddress(resultSet.getString("address"));
+                loadedCustomer.setPhone(resultSet.getString("phone"));
+                loadedCustomer.setEmail(resultSet.getString("email"));
+                loadedCustomer.setBirth_date(resultSet.getString("birth_date"));
+            }
+        }catch (SQLException e){
+            System.out.println(e);
         }
         return loadedCustomer;
     }

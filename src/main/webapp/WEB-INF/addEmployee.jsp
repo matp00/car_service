@@ -38,7 +38,7 @@
             <input type="text" class="form-control" placeholder="Address" name="address">
         </div>
         <div class="col">
-            <input type="number" class="form-control" placeholder="phone" name="phone">
+            <input type="text" class="form-control" placeholder="phone" name="phone">
         </div>
     </div>
 
