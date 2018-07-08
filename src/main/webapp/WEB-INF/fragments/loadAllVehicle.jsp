@@ -70,7 +70,15 @@
             <td>${vehicle.production_year}</td>
             <td>${vehicle.registration_number}</td>
             <td>${vehicle.next_service}</td>
-            <td>${vehicle.customer_id}</td>
+            <c:if  test="${vehicle.customer_id == 0}">
+                <td><button type="button" onclick="location.href='http://localhost:8080/editVehicle?id=${vehicle.id}';">
+                    Add customer
+                </button></td>
+            </c:if>
+            <c:if  test="${vehicle.customer_id != 0}">
+                <td>${vehicle.customer_id}</td>
+            </c:if>
+
 
         </tr>
     </c:forEach>
